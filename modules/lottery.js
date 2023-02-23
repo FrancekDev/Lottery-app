@@ -6,7 +6,6 @@ export default class Lottery {
     this.players = [];
     this.winningCombination = [];
   }
-
   getLotteryNumbers() {
     let lotteryNumbers = [];
 
@@ -17,10 +16,11 @@ export default class Lottery {
         lotteryNumbers.push(number);
       }
     }
+
     lotteryNumbers.sort();
+
     return lotteryNumbers;
   }
-
   generatePlayers() {
     this.people.map((person) => {
       const player = new Player(
@@ -32,13 +32,11 @@ export default class Lottery {
       this.players.push(player);
     });
   }
-
-  getWiningCombinations() {
+  getWinningCombination() {
     this.winningCombination = this.getLotteryNumbers();
   }
-
   startDrawing() {
-    this.generatePlayer();
+    this.generatePlayers();
     this.getWinningCombination();
 
     return new Promise((resolve, reject) => {
@@ -51,10 +49,10 @@ export default class Lottery {
 
         const result = {
           winningCombination: this.winningCombination,
-          winners, //ako je key isti, onda možemo pisati ovako skraćeno
+          winners,
         };
 
-        if (winners.lenght > 0) {
+        if (winners.length > 0) {
           resolve(result);
         } else {
           reject(result);

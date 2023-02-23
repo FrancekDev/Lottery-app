@@ -4,10 +4,13 @@ export default class Player {
     this.surname = surname;
     this.lotteryNumbers = lotteryNumbers;
   }
-  getPlayersDetails() {
+  getPlayerDetails() {
     return `${this.name} ${this.surname} [${this.lotteryNumbers}]`;
   }
   getMaxNumber() {
     return Math.max(...this.lotteryNumbers);
+  }
+  getMinNumber() {
+    return Math.min(...this.lotteryNumbers);
   }
 }
